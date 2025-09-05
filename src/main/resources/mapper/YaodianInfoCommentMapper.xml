@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.YaodianInfoCommentDao">
+
+    <select id="findAllVo" resultType="com.example.vo.YaodianInfoCommentVo">
+        select `comment_yaodian_info`.*, `yaodian_info`.`name` as foreignName from `comment_yaodian_info`
+        left join `yaodian_info` on `comment_yaodian_info`.foreignId = `yaodian_info`.id
+        where 1=1
+        <if test="name != null and name != 'all' and name != ''">
+            and `comment_yaodian_info`.`content` like concat('%', #{name}, '%')
+        </if>
+        order by id
+    </select>
+
+    <select id="findByForeignId" resultType="com.example.vo.YaodianInfoCommentVo">
+        select * from `comment_yaodian_info` where foreignId = #{id} and parentId = #{parentId}
+    </select>
+
+</mapper>

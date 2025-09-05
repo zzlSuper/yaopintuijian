@@ -1,0 +1,18 @@
+2025-09-05 10:11:02.483  INFO 24075 --- [main] com.example.Application                  : Starting Application on zhangzilongdeMacBook-Air.local with PID 24075 (/Users/zhangzilong/Documents/04_graduate/code/yaopintuijian/target/classes started by zhangzilong in /Users/zhangzilong/Documents/04_graduate/code/yaopintuijian)
+2025-09-05 10:11:02.490  INFO 24075 --- [main] com.example.Application                  : No active profile set, falling back to default profiles: default
+2025-09-05 10:11:03.423  WARN 24075 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.example]' package. Please check your configuration.
+2025-09-05 10:11:04.254  INFO 24075 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2025-09-05 10:11:04.279  INFO 24075 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-09-05 10:11:04.279  INFO 24075 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2025-09-05 10:11:04.294  INFO 24075 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangzilong/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2025-09-05 10:11:04.385  INFO 24075 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-09-05 10:11:04.386  INFO 24075 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1836 ms
+2025-09-05 10:11:04.417  INFO 24075 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2025-09-05 10:11:04.421  INFO 24075 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2025-09-05 10:11:04.421  INFO 24075 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2025-09-05 10:11:04.422  INFO 24075 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2025-09-05 10:11:04.422  INFO 24075 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2025-09-05 10:11:05.838  INFO 24075 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-09-05 10:11:06.278  INFO 24075 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2025-09-05 10:11:06.282  INFO 24075 --- [main] com.example.Application                  : Started Application in 4.271 seconds (JVM running for 5.804)
+2025-09-05 10:11:14.850  INFO 24075 --- [Thread-12] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

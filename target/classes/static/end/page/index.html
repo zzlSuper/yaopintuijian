@@ -1,0 +1,292 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+    <title>home</title>
+
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/font-awesome.css" rel="stylesheet"/>
+    <link href="../css/custom-styles.css" rel="stylesheet"/>
+    <link href="../css/element/index.css" rel="stylesheet"/>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper" v-cloak>
+    <div class="row">
+        <div class="col-md-12" style="height:60px;">
+            <nav class="navbar navbar-default top-navbar" role="navigation">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a class="navbar-brand" style="width:100%; background-color: darkslateblue" href="index.html"><strong style="font-size: 20px;">药品智能推荐系统</strong></a>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="navbar-header">
+                            <a href="/front/index.html" style="color: white; line-height: 60px; font-size: 16px; margin-left: 30px"><i class="fa fa-desktop"></i></a>
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li style="color: white">欢迎您，{{ user.name }}</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="javascript:void(0)" @click="personalPage"><i class="fa fa-user fa-fw"></i> 个人信息</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:void(0)" @click="logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <nav id="nav-id" class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+                        <li>
+                            <a href="index.html" class="active-menu"><i class="fa fa-dashboard"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap"></i> 信息管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in">
+								<li v-if="authority.indexOf(1) != -1">
+									<a href="adminInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">管理员信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(2) != -1">
+									<a href="userInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">用户信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(3) != -1">
+									<a href="yufangInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">疾病预防信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(4) != -1">
+									<a href="baikeInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">健康百科信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(5) != -1">
+									<a href="yaodianInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">药店信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(6) != -1">
+									<a href="mapInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">路线导航信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(7) != -1">
+									<a href="zhinengInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">智能判断信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(1000001) != -1">
+									<a href="advertiserInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">公告信息</span></a>
+								</li>
+
+                                <li>
+                                    <a href="javascript:void(0)" @click="personalPage"><i class="fa fa-user"></i>个人信息</a>
+                                </li>
+
+                            </ul>
+                        </li>
+				<li>
+					<a href="yufangInfoComment.html"><i class="fa fa-file"></i>疾病预防信息评论</a>
+				</li>
+				<li>
+					<a href="baikeInfoComment.html"><i class="fa fa-file"></i>健康百科信息评论</a>
+				</li>
+				<li>
+					<a href="yaodianInfoComment.html"><i class="fa fa-file"></i>药店信息评论</a>
+				</li>
+
+                        <li>
+                            <a href="updatePassword.html"><i class="fa fa-unlock-alt"></i>修改密码</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" @click="logout"><i class="fa fa-power-off"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-10" id="page-id" style="background-color: #e6e6e6">
+            <div id="page-wrapper">
+                <div id="page-inner">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center no-boder">
+						<div class="panel-left pull-left red"></div>
+						<div class="panel-right">
+							<h3 id="adminInfo"></h3>
+							<strong>管理员信息</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center no-boder">
+						<div class="panel-left pull-left blue"></div>
+						<div class="panel-right">
+							<h3 id="userInfo"></h3>
+							<strong>用户信息</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center no-boder">
+						<div class="panel-left pull-left green"></div>
+						<div class="panel-right">
+							<h3 id="zhinengInfo"></h3>
+							<strong>智能判断信息</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center no-boder">
+						<div class="panel-left pull-left null"></div>
+						<div class="panel-right">
+							<h3 id="advertiserInfo"></h3>
+							<strong>公告信息</strong>
+						</div>
+					</div>
+				</div>
+			</div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default" style="background-color: whitesmoke; min-height: 500px">
+                                <div class="panel-heading" style="margin-bottom:10px; background-color: whitesmoke">
+                                    数据图表
+                                    <select style="margin-left: 10px" @change="drawLine"
+                                            v-model="echartsModel">
+                                        <option v-for="item in echartsModelOptions" :key="item.value" :value="item.value">{{item.label}}</option>
+                                    </select>
+                                    <select style="float:right" @change="selectEchartsType" v-model="echartsType">
+                                        <option value="pie">饼图</option>
+                                        <option value="bar">柱状图</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                    <div id="main" style="width: 100%;height:400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.metisMenu.js"></script>
+<script src="../js/custom-scripts.js"></script>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/element/index.js"></script>
+
+<script>
+
+    new Vue({
+        el: "#wrapper",
+        data: {
+            user: {},
+            authority: [],
+            echartsModelOptions: [],
+            echartsModel: '',
+            echartsShowArr: [],
+            echartsType: 'pie'
+        },
+        created: function () {
+            this.user = JSON.parse(localStorage.getItem("user"));
+
+            axios.get("/authority").then(res => {
+                if (res.data.code === '0') {
+                    this.authority = res.data.data;
+                } else {
+                    msg('error', res.data.msg);
+                }
+            });
+            axios.get("/getTotal").then(res => {
+                if (res.data.code === '0') {
+                    let map = res.data.data;
+					$("#adminInfo").text(map['adminInfo']);
+					$("#userInfo").text(map['userInfo']);
+					$("#zhinengInfo").text(map['zhinengInfo']);
+					$("#advertiserInfo").text(map['advertiserInfo']);
+
+                }
+            });
+
+            // 处理预约审核模型代码
+            let user = JSON.parse(localStorage.getItem('user'));
+            let level = user.level;
+            this.user = user;
+
+
+            axios.get('/echarts/options').then(res => {
+                this.echartsModelOptions = res.data.data;
+                if (this.echartsModelOptions.length) {
+                    this.echartsModel = this.echartsModelOptions[0].value;
+                    this.drawLine();
+
+                    const menuHeight = document.getElementById("main-menu").getElementsByTagName('li').length * 53;
+                    const pageHeight = document.getElementById("page-id").clientHeight;
+                    const bodyHeight = document.getElementsByTagName("body")[0].clientHeight;
+
+                    let height = menuHeight;
+                    if (height < pageHeight) {
+                        height = pageHeight;
+                    }
+                    if (height < bodyHeight) {
+                        height = bodyHeight;
+                    }
+                    document.getElementById("nav-id").style.height = height + 'px';
+                }
+            });
+        },
+        methods: {
+            drawLine() {
+                axios.get('/echarts/get/' + this.echartsModel).then(res => {
+                    // 基于准备好的dom，初始化echarts实例
+                    this.echartsShowArr = res.data.data;
+                    if (this.echartsShowArr.length) {
+                        let myChart = echarts.init(document.getElementById('main'));
+                        let option = this.getEchartsType(this.echartsShowArr, this.echartsType);
+                        myChart.setOption(option, true);
+                    }
+                });
+            },
+            selectEchartsType() {
+                let myChart = echarts.init(document.getElementById('main'));
+                let option = this.getEchartsType(this.echartsShowArr, this.echartsType);
+                myChart.setOption(option, true);
+            },
+            getEchartsType(echartsArr, type) {
+                for (let item of echartsArr) {
+                    if (item.series[0].type === type) {
+                        return item;
+                    }
+                }
+            },
+            logout() {
+                logout();
+            }
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

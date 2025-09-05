@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+    <title>路线导航信息</title>
+
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/font-awesome.css" rel="stylesheet"/>
+    <link href="../css/custom-styles.css" rel="stylesheet"/>
+    <link href="../css/element/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="wrapper">
+    <div class="row">
+        <div class="col-md-12" style="height:60px;">
+            <nav class="navbar navbar-default top-navbar" role="navigation">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a class="navbar-brand" style="width:100%; background-color: darkslateblue" href="index.html"><strong style="font-size: 20px;">药品智能推荐系统</strong></a>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="navbar-header">
+                            <a href="/front/index.html" style="color: white; line-height: 60px; font-size: 16px; margin-left: 30px"><i class="fa fa-desktop"></i></a>
+                        </div>
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li style="color: white">欢迎您，{{ user.name }}</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="javascript:void(0)" @click="personalPage"><i class="fa fa-user fa-fw"></i> 个人信息</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:void(0)" @click="logout"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <nav id="nav-id" class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard"></i> 首页</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap"></i> 信息管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse in">
+								<li v-if="authority.indexOf(1) != -1">
+									<a href="adminInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">管理员信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(2) != -1">
+									<a href="userInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">用户信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(3) != -1">
+									<a href="yufangInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">疾病预防信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(4) != -1">
+									<a href="baikeInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">健康百科信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(5) != -1">
+									<a href="yaodianInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">药店信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(6) != -1">
+									<a href="mapInfo.html" class="active-menu"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">路线导航信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(7) != -1">
+									<a href="zhinengInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">智能判断信息</span></a>
+								</li>
+								<li v-if="authority.indexOf(1000001) != -1">
+									<a href="advertiserInfo.html"><i class="fa fa-table sub-icon-mg" aria-hidden="true"></i><span class="mini-sub-pro">公告信息</span></a>
+								</li>
+
+                                <li>
+                                    <a href="javascript:void(0)" @click="personalPage"><i class="fa fa-user"></i>个人信息</a>
+                                </li>
+
+                            </ul>
+                        </li>
+				<li>
+					<a href="yufangInfoComment.html"><i class="fa fa-file"></i>疾病预防信息评论</a>
+				</li>
+				<li>
+					<a href="baikeInfoComment.html"><i class="fa fa-file"></i>健康百科信息评论</a>
+				</li>
+				<li>
+					<a href="yaodianInfoComment.html"><i class="fa fa-file"></i>药店信息评论</a>
+				</li>
+
+                        <li>
+                            <a href="updatePassword.html"><i class="fa fa-unlock-alt"></i>修改密码</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" @click="logout"><i class="fa fa-power-off"></i>退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-10" style="background-color: #e6e6e6">
+            <div id="page-wrapper">
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="page-header">
+                                <small>百度地图查询</small>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="panel panel-default" style="background-color: whitesmoke">
+                            <div class="panel-body">
+                                <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; text-align: center">
+                                    <span style="margin-right: 20px; color: red">搜索地点：</span>
+                                    <input type="text" style="margin-right: 10px; width: 100px" placeholder="请输入地点" id="station">
+                                    <input type="button" id="location" value="查询"/>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; text-align: center">
+                                    <span style="margin-right: 20px; color: red">搜索驾车路线：</span>
+                                    起点：<input type="text" style="margin-right: 10px; width: 100px" placeholder="请输入起点" id="start">
+                                    终点：<input type="text" style="margin-right: 10px; width: 100px" placeholder="请输入终点" id="end">
+                                    <span id="driving_way">
+				<select>
+					<option value="0">最少时间</option>
+					<option value="1">最短距离</option>
+					<option value="2">避开高速</option>
+				</select>
+			</span>
+                                    <input type="button" id="route" value="查询"/>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 20px; margin-bottom: 20px; text-align: center">
+                                    <span style="margin-right: 20px; color: red">搜索步行路线：</span>
+                                    起点：<input type="text" style="margin-right: 10px; width: 100px" placeholder="请输入起点" id="start-1">
+                                    终点：<input type="text" style="margin-right: 10px; width: 100px" placeholder="请输入终点" id="end-1">
+                                    <input type="button" id="path" value="查询"/>
+                                </div>
+                                <div style="width: 800px; height: 500px; margin: 100px auto" id="allmap"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.metisMenu.js"></script>
+<script src="../js/custom-scripts.js"></script>
+<script src="../js/my.js"></script>
+<script src="../js/vue2.6.11/vue.min.js"></script>
+<script src="../js/vue2.6.11/axios.js"></script>
+<script src="../js/element/index.js"></script>
+
+<script type="text/javascript">
+
+    new Vue({
+        el: '#wrapper',
+        data: {
+            name: '',
+            authority: [],
+        },
+        created: function () {
+            this.user = JSON.parse(localStorage.getItem("user"));
+            axios.get("/authority").then(res => {
+                if (res.data.code === '0') {
+                    this.authority = res.data.data;
+                } else {
+                    msg('error', res.data.msg);
+                }
+            });
+        }
+    });
+
+    var map;
+    !function(mapInit) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "http://api.map.baidu.com/api?v=2.0&ak=1oulcORPlbRWngGxo0XjZrOj1SOWp6Ml&callback=mapinit";
+        window['mapinit'] = function() {
+            mapInit();
+        };
+        document.head.appendChild(script);
+
+    }(function() {
+
+        // 百度地图API功能
+        map = new BMap.Map("allmap");  // 创建Map实例
+        var point = new BMap.Point(116.331398,39.897445);
+        if (map) {
+            map.centerAndZoom(point,12);
+            var geolocation = new BMap.Geolocation();
+            geolocation.getCurrentPosition(function(r){
+                if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                    var mk = new BMap.Marker(r.point);
+                    map.addOverlay(mk);
+                    map.panTo(r.point);
+                    // alert('您的位置：'+r.point.lng+','+r.point.lat);
+                }
+                else {
+                    alert('failed'+this.getStatus());
+                }
+            },{enableHighAccuracy: true})
+
+            map.enableScrollWheelZoom(true);
+
+            map.addControl(new BMap.CityListControl({
+                anchor: BMAP_ANCHOR_TOP_LEFT
+            }));
+        }
+
+    });
+
+    $('#location').click(function() {
+        var local = $("#station").val();
+        new BMap.LocalSearch(map, {
+            renderOptions:{map: map}
+        }).search(local);
+    });
+
+    $("#route").click(function(){
+        //三种驾车策略：最少时间，最短距离，避开高速
+        var routePolicy = [BMAP_DRIVING_POLICY_LEAST_TIME,BMAP_DRIVING_POLICY_LEAST_DISTANCE,BMAP_DRIVING_POLICY_AVOID_HIGHWAYS];
+        var start = $("#start").val();
+        var end = $("#end").val();
+        map.clearOverlays();
+        var i = $("#driving_way select").val();
+        search(start,end,routePolicy[i]);
+        function search(start,end,route){
+            var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true},policy: route});
+            driving.search(start,end);
+        }
+    });
+
+    $("#path").click(function(){
+        var myP1 = $("#start-1").val();
+        var myP2 = $("#end-1").val();
+        var myIcon = new BMap.Icon("/front/img/mali.png", new BMap.Size(30, 30), {    //小人图片
+            //offset: new BMap.Size(0, -5),    //相当于CSS精灵
+            imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+        });
+
+        var driving2 = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});    //驾车实例
+        driving2.search(myP1, myP2);    //显示一条步行线路
+        map.clearOverlays();
+        window.run = function (){
+            var driving = new BMap.WalkingRoute(map);    //步行实例
+            driving.search(myP1, myP2);
+            driving.setSearchCompleteCallback(function(){
+                var pts = driving.getResults().getPlan(0).getRoute(0).getPath();    //通过步行实例，获得一系列点的数组
+                var paths = pts.length;    //获得有几个点
+
+                var carMk = new BMap.Marker(pts[0],{icon:myIcon});
+                map.addOverlay(carMk);
+                i = 0;
+                function resetMkPoint(i){
+                    carMk.setPosition(pts[i]);
+                    if(i < paths){
+                        setTimeout(function(){
+                            i++;
+                            resetMkPoint(i);
+                        },100);
+                    }
+                }
+                setTimeout(function(){
+                    resetMkPoint(5);
+                },100)
+
+            });
+        }
+
+        setTimeout(function(){
+            run();
+        },1500);
+
+    });
+
+</script>
+</body>
+</html>

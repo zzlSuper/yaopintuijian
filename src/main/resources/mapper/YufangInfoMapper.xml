@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.YufangInfoDao">
+
+    <select id="findByName" resultType="com.example.vo.YufangInfoVo">
+        select `yufang_info`.* from `yufang_info`
+
+        where 1 = 1
+        <if test="name != null and name != '' and name != 'all'">
+            and `yufang_info`.`name` like concat('%', #{name}, '%')
+        </if>
+        order by `yufang_info`.id desc
+    </select>
+
+    <select id="findVoById" resultType="com.example.vo.YufangInfoVo">
+        select `yufang_info`.* from `yufang_info`
+
+        where `yufang_info`.id = #{id}
+    </select>
+
+
+</mapper>
