@@ -23,6 +23,7 @@ public class TestController {
             resultMap.put("A", "A");
         } else{
             resultMap.put("a", "a");
+
         }
         return JSONObject.toJSONString(resultMap);
     }
